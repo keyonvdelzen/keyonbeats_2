@@ -261,7 +261,7 @@
               "
               class="mobile-menu-sign-up-cta has-text-centered"
             >
-              <h1 class="title is-4">Love music? 💖</h1>
+              <h1 class="title is-4">New here?</h1>
               <NuxtLink to="/account/register">
                 <button
                   class="button is-large is-primary has-text-bold"
@@ -272,7 +272,7 @@
                   @click="closeMobileMenu()"
                 >
                   <span>
-                    <span>Join the fam</span>
+                    <span>Create account 💖</span>
                     <font-awesome-icon icon="arrow-right" class="ml-2" />
                   </span>
                 </button>

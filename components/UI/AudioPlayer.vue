@@ -545,7 +545,7 @@ export default {
       const path = `/product/${productId}/${productSlug}`
       if (this.$route.path !== path) {
         this.$router.push({
-          name: `products-detail`,
+          path,
           params: {
             productId,
             productSlug,
