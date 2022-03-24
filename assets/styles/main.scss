@@ -1,0 +1,42 @@
+// 1. Import the initial variables
+@import "@/../node_modules/bulma/sass/utilities/initial-variables.sass";
+@import "@/../node_modules/bulma/sass/utilities/functions";
+
+// 2. Set the custom variables
+$pink: #ffcdcd;
+$pink-invert: findColorInvert($pink);
+$blue: #9AD7FF;
+$blue-invert: findColorInvert($blue);
+$purple: #CCC2FF;
+$purple-invert: findColorInvert($purple);
+$family-serif: 'Open Sans', sans-serif;
+
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$primary: $pink;
+$primary-invert: $pink-invert;
+
+// Use the new serif family
+$family-primary: $family-serif;
+
+// 4. Add new color variables to the color map.
+@import "@/../node_modules/bulma/sass/utilities/derived-variables";
+$addColors: (
+  "pink": ($pink, $pink-invert),
+  "blue": ($blue, $blue-invert),
+  "purple": ($purple, $purple-invert)
+);
+$colors: map-merge($colors, $addColors);
+
+// 5. Import the rest of Bulma
+@import "@/../node_modules/bulma/bulma";
+
+// 6. Import bulma extensions
+@import 'node_modules/bulma-extensions/bulma-pricingtable/src/sass/index.sass';
+@import 'node_modules/bulma-extensions/bulma-steps/src/sass/index.sass';
+@import 'node_modules/bulma-extensions/bulma-divider/src/sass/index.sass';
+@import 'node_modules/bulma-extensions/bulma-quickview/src/sass/index.sass';
+@import 'node_modules/bulma-extensions/bulma-checkradio/src/sass/index.sass';
+@import 'node_modules/bulma-extensions/bulma-quickview/src/sass/index.sass';
+@import 'node_modules/bulma-extensions/bulma-switch/src/sass/index.sass';

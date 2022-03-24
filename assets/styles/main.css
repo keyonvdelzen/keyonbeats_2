@@ -1,0 +1,592 @@
+/*  */
+/* Custom CSS variables available as 'var(--varName)' */
+/*  */
+:root {
+  --primary: #ffcdcd;
+  --pink: #ffcdcd;
+  --blue: #9AD7FF;
+  --purple: #CCC2FF;
+  --danger: #f14668;
+  --success: #48c78e;
+
+  --site-header-height-desktop: 120px;
+  --site-header-height-tablet: 120px;
+  --site-header-height-mobile: 60px;
+
+  --audio-player-height: 100px;
+}
+
+/*  */
+/* Custom global classes */
+/*  */
+
+.has-text-bold {
+  font-weight: bold;
+}
+
+.persist-multiline {
+  white-space: pre-line;
+}
+
+.is-clickable {
+  cursor: pointer;
+} /* Sets cursor to hand on hover */
+
+.is-not-clickable {
+  cursor: default !important;
+} /* Forces cursor to normal on hover */
+
+.is-fullheight {
+  height: 100%;
+}
+
+.is-ghost {
+  border: none;
+}
+
+.is-hcentered {
+  margin-left: auto;
+  margin-right: auto;
+} /* Horizontally centers element in parent element (if possible with margin auto that is...) */
+
+.image.is-90x90 {
+  height: 90px;
+  width: 90px;
+} /* Addition to bulma's image dimensions */
+
+
+  .push-view-up-for-audioplayer {
+    margin-bottom: 100px;
+  }  /* Push everything up if audio player is visible */
+
+/*  */
+/* Page content classes */
+/*  */
+
+/* Desktop */
+@media only screen and (min-width: 769px) {
+  .page-content-default {
+    height: calc(100vh - 120px);
+    max-width: 1260px;
+    padding: 30px;
+    margin: auto auto 0 auto;
+    background-color: #fff;
+  }
+  /* TODO: Check if classes below can be used instead of fullheight hero */
+  .page-content-full {
+    height: calc(100vh - 120px);
+    padding: 30px;
+    width: 100vw;
+    background-color: white;
+  }
+
+  .page-content-full-admin {
+    height: calc(100vh - 62px);
+    width: calc(100vw - 200px);
+    padding: 30px;
+    background-color: white;
+  }
+}
+
+/* Tablet (admin) */
+@media only screen and (min-width: 769px) and (max-width: 1023px) {
+  .page-content-full-admin {
+    height: calc(100vh - 62px);
+    padding: 30px;
+    width: 100vw;
+    background-color: white;
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+  .page-content-default {
+    height: calc(100vh - 60px);
+    max-width: 1260px;
+    padding: 30px;
+    margin: auto auto 0 auto;
+    background-color: #fff;
+  }
+  .page-content-full {
+    height: calc(100vh - 60px);
+    padding: 30px;
+    width: 100vw;
+    background-color: white;
+  }
+
+  .page-content-full-admin {
+    height: calc(100vh - 62px);
+    padding: 30px;
+    width: 100vw;
+    background-color: white;
+  }
+}
+
+
+
+/* Modal responsive styling */
+/* Modal styling for screenwidth >= 1024px*/
+@media only screen and (min-width: 1024px) {
+  .modal-card {
+    width: 75% !important;
+    max-height: 800px !important;
+    max-width: 1200px !important;
+    }
+}
+
+/* Modal styling for screenwidth between 769px and 1023px*/
+@media only screen and (min-width: 769px) and (max-width: 1023px) {
+  .modal-card {
+    height: 100% !important;
+    width: 100% !important;
+    max-height: 100% !important;
+    }
+  .modal-card-head, .modal-card-foot  {
+      border-radius: 0px !important;
+      padding: 10px !important;
+  }
+}
+
+/* Modal styling for screenwidth <= 768px */
+@media only screen and (max-width: 768px) {
+  .modal-card {
+    height: 100% !important;
+    width: 100% !important;
+    max-height: 100% !important;
+    }
+  .modal-card-head, .modal-card-foot  {
+      border-radius: 0px !important;
+      padding: 10px !important;
+  }
+}
+
+/* Floating button mobile */
+@media only screen and (max-width: 768px) {
+    /* Normal button */
+    .bottom-button-container-mobile #button-fixed {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        border-radius: 0;
+        z-index: 10;
+    }
+    /* Button if audio player is visible */
+    .bottom-button-container-mobile #button-float {
+        position: fixed;
+        width: 100%;
+        bottom: 100px;
+        left: 0;
+        border-radius: 0;
+        z-index: 10;
+    }
+}
+
+/* Set bulma loading icon to color white */
+.button.is-primary.is-loading::after {
+    border-color: transparent transparent #fff #fff !important;
+}
+
+/* Set bulma extensions radio check to white if bg color is primary */
+.is-checkradio[type=checkbox].is-primary:checked.has-background-color + label:after {
+    border-color: #fff !important;
+}
+
+/*
+  Tooltip styles, from https://codepen.io/reiinii1/pen/aPGXEa
+*/
+
+[data-tooltip] {
+  position: relative;
+}
+
+/* Positioning and visibility settings of the tooltip */
+[data-tooltip]:before,
+[data-tooltip]:after {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  left: 50%;
+  bottom: calc(100% + 5px); /* 5px is the size of the arrow */
+  pointer-events: none;
+  transition: 0.2s;
+  will-change: transform;
+  z-index: 100;
+}
+
+/* The actual tooltip with a dynamic width */
+[data-tooltip]:before {
+  content: attr(data-tooltip);
+  padding: 10px 18px;
+  min-width: 50px;
+  max-width: 300px;
+  width: max-content;
+  width: -moz-max-content;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: rgba(59, 72, 80, 0.9);
+  background-image: linear-gradient(30deg,
+    rgba(59, 72, 80, 0.44),
+    rgba(59, 68, 75, 0.44),
+    rgba(60, 82, 88, 0.44));
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  text-align: center;
+  white-space: pre-wrap;
+  transform: translate(-50%, -5px) scale(0.5);
+  z-index: 100;
+}
+
+/* Tooltip arrow */
+[data-tooltip]:after {
+  content: '';
+  border-style: solid;
+  border-width: 5px 5px 0px 5px; /* CSS triangle */
+  border-color: rgba(55, 64, 70, 0.9) transparent transparent transparent;
+  transition-duration: 0s; /* If the mouse leaves the element, 
+                              the transition effects for the 
+                              tooltip arrow are "turned off" */
+  transform-origin: top;   /* Orientation setting for the
+                              slide-down effect */
+  transform: translateX(-50%) scaleY(0);
+  z-index: 100;
+}
+
+/* Tooltip becomes visible at hover */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  opacity: 1;
+}
+/* Scales from 0.5 to 1 -> grow effect */
+[data-tooltip]:hover:before {
+  transition-delay: 0.3s;
+  transform: translate(-50%, -5px) scale(1);
+}
+/* 
+  Arrow slide down effect only on mouseenter (NOT on mouseleave)
+*/
+[data-tooltip]:hover:after {
+  transition-delay: 0.5s; /* Starting after the grow effect */
+  transition-duration: 0.2s;
+  transform: translateX(-50%) scaleY(1);
+}
+/*
+  That's it.
+*/
+
+
+/*
+  If you want some adjustability
+  here are some orientation settings you can use:
+*/
+
+
+/* LEFT */
+/* Tooltip + arrow */
+[data-tooltip-location="left"]:before,
+[data-tooltip-location="left"]:after {
+  left: auto;
+  right: calc(100% + 5px);
+  bottom: 50%;
+}
+
+/* Tooltip */
+[data-tooltip-location="left"]:before {
+  transform: translate(-5px, 50%) scale(0.5);
+}
+[data-tooltip-location="left"]:hover:before {
+  transform: translate(-5px, 50%) scale(1);
+}
+
+/* Arrow */
+[data-tooltip-location="left"]:after {
+  border-width: 5px 0px 5px 5px;
+  border-color: transparent transparent transparent rgba(55, 64, 70, 0.9);
+  transform-origin: left;
+  transform: translateY(50%) scaleX(0);
+}
+[data-tooltip-location="left"]:hover:after {
+  transform: translateY(50%) scaleX(1);
+}
+
+/* RIGHT */
+[data-tooltip-location="right"]:before,
+[data-tooltip-location="right"]:after {
+  left: calc(100% + 5px);
+  bottom: 50%;
+}
+
+[data-tooltip-location="right"]:before {
+  transform: translate(5px, 50%) scale(0.5);
+}
+[data-tooltip-location="right"]:hover:before {
+  transform: translate(5px, 50%) scale(1);
+}
+
+[data-tooltip-location="right"]:after {
+  border-width: 5px 5px 5px 0px;
+  border-color: transparent rgba(55, 64, 70, 0.9) transparent transparent;
+  transform-origin: right;
+  transform: translateY(50%) scaleX(0);
+}
+[data-tooltip-location="right"]:hover:after {
+  transform: translateY(50%) scaleX(1);
+}
+
+/* BOTTOM */
+[data-tooltip-location="bottom"]:before,
+[data-tooltip-location="bottom"]:after {
+  top: calc(100% + 5px);
+  bottom: auto;
+}
+
+[data-tooltip-location="bottom"]:before {
+  transform: translate(-50%, 5px) scale(0.5);
+}
+[data-tooltip-location="bottom"]:hover:before {
+  transform: translate(-50%, 5px) scale(1);
+}
+
+[data-tooltip-location="bottom"]:after {
+  border-width: 0px 5px 5px 5px;
+  border-color: transparent transparent rgba(55, 64, 70, 0.9) transparent;
+  transform-origin: bottom;
+}
+
+.pricing-plan.is-active {
+  z-index: 10;
+}
+
+/*  */
+/* Custom text selection color */
+/*  */
+
+::-moz-selection { /* Code for Firefox */
+  color: #fff;
+  background: var(--primary);
+}
+
+::selection {
+  color: #fff;
+  background: var(--primary);
+}
+
+/*  */
+/* Animation Presets */
+/*  */
+
+/* Default fade */
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.2s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+  overflow: hidden;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0
+}
+
+/* Slow fade */
+.fade-slow-enter-active,
+.fade-slow-leave-active {
+  transition-duration: 0.4s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+  overflow: hidden;
+}
+
+.fade-slow-enter,
+.fade-slow-leave-active {
+  opacity: 0
+}
+
+/* Icon rotate */
+.rotate-icon-enter-active,
+.rotate-icon-leave-active {
+  transition: all .2s cubic-bezier(.75,0,.25,1);
+}
+
+.rotate-icon-enter,
+.rotate-icon-leave-to {
+  transform: rotateZ(180deg);
+  opacity: 0;
+}
+
+.rotate-icon-enter-to,
+.rotate-icon-leave {
+  transform: rotateZ(360deg);
+  opacity: 1;
+}
+
+/* Page fade */
+.fade-page-enter-active,
+.fade-page-leave-active {
+  transition-duration: 0.25s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+  overflow: hidden;
+}
+
+.fade-page-enter,
+.fade-page-leave-active {
+  opacity: 0
+}
+
+/* Layout transition */
+.layout-enter-active,
+.layout-leave-active {
+  transition: opacity 0.125s;
+}
+.layout-enter,
+.layout-leave-active {
+  opacity: 0;
+}
+
+/* Loading spinner ring styling (primary color) */
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 8px solid var(--primary);
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: var(--primary) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loading spinner ring styling (white) */
+.lds-ring-white {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.lds-ring-white div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 8px solid white;
+  border-radius: 50%;
+  animation: lds-ring-white 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: white transparent transparent transparent;
+}
+.lds-ring-white div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring-white div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring-white div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring-white {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Button pulse on enable */
+
+/* Desktop */
+.button.desktop.is-enabled {
+  animation: 1s jump-desktop ease;
+}
+
+@keyframes jump-desktop {
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+    background-color: var(--primary);
+  }
+  25% {
+    transform: scale(1.1);
+    box-shadow: 0 4px 100px rgba(0,0,0,.1);
+    background-color: #ffd7d7;
+  }
+  50% {
+    transform: scale(1);
+    box-shadow: none;
+    background-color: var(--primary);
+  }
+  75% {
+    transform: scale(1.1);
+    box-shadow: 0 4px 100px rgba(0,0,0,.1);
+    background-color: #ffd7d7;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+    background-color: var(--primary);
+  }
+}
+
+/* Mobile */
+.button.mobile.is-enabled {
+  animation: 1s jump-mobile ease;
+}
+
+@keyframes jump-mobile {
+  0% {
+    transform: scale(1);
+    height: 60px;
+    background-color: var(--primary);
+  }
+  25% {
+    transform: scale(1.05);
+    height: 65px;
+    background-color: #ffd7d7;
+  }
+  50% {
+    transform: scale(1);
+    height: 60px;
+    background-color: var(--primary);
+  }
+  75% {
+    transform: scale(1.05);
+    height: 65px;
+    background-color: #ffd7d7;
+  }
+  100% {
+    transform: scale(1);
+    height: 60px;
+    background-color: var(--primary);
+  }
+}
