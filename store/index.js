@@ -10,21 +10,6 @@ export const mutations = {
 export const actions = {
      nuxtServerInit({ commit }, { redirect, app, req, $config}) {
 
-        // get clientIp
-        let ipAddr = req.headers["x-forwarded-for"]
-        if (ipAddr){
-            // var list = ipAddr.split(",")
-            // ipAddr = list[list.length-1]
-        } else {
-            ipAddr = req.connection.remoteAddress
-        }
-        
-        // set clientIp in store
-        commit(
-            'userInterface/setClientIp',
-            ipAddr
-        )
-
         // TODO: TRUNCATE TO A SINGLE API CALL, OR MOVE FETCH DATA TO LAYOUT
         // --> I'll probably do this once I implement multi-currency and cookie pop-up etc
         // Think I'll just make a single back-end endpoint 'app-startup' or something (containing general product data, country data, currency exchange rates etc)

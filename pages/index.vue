@@ -25,8 +25,6 @@
 </router>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   head() {
     return {
@@ -39,16 +37,6 @@ export default {
         },
       ],
     }
-  },
-  computed: {
-    ...mapGetters({
-      clientIp: 'userInterface/getClientIp',
-    }),
-  },
-  methods: {
-    testRoute() {
-      this.$router.push('/account/order/123123')
-    },
   },
 }
 </script>

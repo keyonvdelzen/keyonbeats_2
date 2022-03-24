@@ -44,20 +44,22 @@
   border: none;
 }
 
+/* Horizontally centers element in parent element */
 .is-hcentered {
   margin-left: auto;
   margin-right: auto;
-} /* Horizontally centers element in parent element (if possible with margin auto that is...) */
+} 
 
+/* Addition to bulma's image dimensions */
 .image.is-90x90 {
   height: 90px;
   width: 90px;
-} /* Addition to bulma's image dimensions */
+} 
 
-
-  .push-view-up-for-audioplayer {
-    margin-bottom: 100px;
-  }  /* Push everything up if audio player is visible */
+/* Push everything up if audio player is visible */
+.push-view-up-for-audioplayer {
+  margin-bottom: 100px;
+}  
 
 /*  */
 /* Page content classes */
@@ -72,26 +74,8 @@
     margin: auto auto 0 auto;
     background-color: #fff;
   }
-  /* TODO: Check if classes below can be used instead of fullheight hero */
   .page-content-full {
     height: calc(100vh - 120px);
-    padding: 30px;
-    width: 100vw;
-    background-color: white;
-  }
-
-  .page-content-full-admin {
-    height: calc(100vh - 62px);
-    width: calc(100vw - 200px);
-    padding: 30px;
-    background-color: white;
-  }
-}
-
-/* Tablet (admin) */
-@media only screen and (min-width: 769px) and (max-width: 1023px) {
-  .page-content-full-admin {
-    height: calc(100vh - 62px);
     padding: 30px;
     width: 100vw;
     background-color: white;
@@ -113,16 +97,7 @@
     width: 100vw;
     background-color: white;
   }
-
-  .page-content-full-admin {
-    height: calc(100vh - 62px);
-    padding: 30px;
-    width: 100vw;
-    background-color: white;
-  }
 }
-
-
 
 /* Modal responsive styling */
 /* Modal styling for screenwidth >= 1024px*/
@@ -271,16 +246,6 @@
   transition-duration: 0.2s;
   transform: translateX(-50%) scaleY(1);
 }
-/*
-  That's it.
-*/
-
-
-/*
-  If you want some adjustability
-  here are some orientation settings you can use:
-*/
-
 
 /* LEFT */
 /* Tooltip + arrow */
